@@ -1,21 +1,9 @@
-import Users from './Users.js';
-import Category from './Category.js';
-import KelolaPesanan from './KelolaPesanan.js';
-import PaymentMethod from './PaymentMethod.js';
-import Product from './Product.js';
-import KelolaPelanggan from './KelolaPelanggan.js';
-import Cart from './Cart.js';
-import CheckOut from './CheckOut.js';
-import DaftarPesanan from './DaftarPesanan.js';
-
-export {
-  Users,
-  Category,
-  KelolaPesanan,
-  PaymentMethod,
-  Product,
-  KelolaPelanggan,
-  Cart,
-  CheckOut,
-  DaftarPesanan,
-};
+export { default as Users } from './Users.js';
+export { default as Category } from './Category.js';
+export { default as KelolaPesanan } from './KelolaPesanan.js';
+export { default as PaymentMethod } from './PaymentMethod.js';
+export { default as Product } from './Product.js';
+export { default as KelolaPelanggan } from './KelolaPelanggan.js';
+export { default as Cart } from './Cart.js';
+export { default as CheckOut } from './CheckOut.js';
+export { default as DaftarPesanan } from './DaftarPesanan.js';

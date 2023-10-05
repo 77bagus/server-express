@@ -2,7 +2,6 @@
   "name": "just_thrift",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -25,5 +24,6 @@
     "mysql2": "^3.6.1",
     "sequelize": "^6.33.0",
     "uuidv4": "^6.2.13"
-  }
+  },
+  "description": ""
 }
