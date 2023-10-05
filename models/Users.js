@@ -28,13 +28,4 @@ const Users = sequelize.define('users', {
   },
 });
 
-const syncUsers = async () => {
-  try {
-    await Users.sync();
-    console.log('Model Users telah disinkronkan dengan tabel.');
-  } catch (error) {
-    console.error('Kesalahan dalam menyinkronkan model Users:', error);
-  }
-};
-
-export default { Users, syncUsers };
+export default Users;

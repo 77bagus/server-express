@@ -1,63 +1,53 @@
 import { Product } from '../models/index.js';
 
-export const createProduct = async (productData) => {
-    try {
-      
-      productsUpload(req, res, async (err) => {
-        if (err) {
-          throw new Error(err);
-        }
-        const { productName, description, categoryId, price, quantity } = req.body;
-        const productImage = req.file ? req.file.path : null; 
-        const newProduct = await Product.create({
-          productName,
-          description,
-          categoryId,
-          price,
-          quantity,
-          productImage,
-        });
-        return newProduct;
-      });
-    } catch (error) {
-      console.error('Error creating product:', error);
-      throw error;
-    }
-  };
-  
-
-export const getAllProducts = async () => {
+// Mengambil semua produk
+export const get = async () => {
   try {
     const products = await Product.findAll();
-    console.log('Retrieved all products');
     return products;
   } catch (error) {
-    console.error('Error retrieving products:', error);
-    throw error;
+    throw new Error('Gagal mengambil produk');
   }
 };
 
-export const updateProduct = async (id, productData) => {
+// Mengambil produk berdasarkan ID
+
+// Membuat produk baru
+export const add = async (productData) => {
   try {
-    const [updated] = await Product.update(productData, { where: { ID: id } });
-    if (updated) {
-      const updatedProduct = await Product.findByPk(id);
-      console.log('Product updated:', updatedProduct.Product_Name);
-      return updatedProduct;
+    const newProduct = await Product.create(productData);
+    return newProduct;
+  } catch (error) {
+    throw new Error('Gagal membuat produk');
+  }
+};
+
+// Memperbarui produk berdasarkan ID
+export const edit = async (id, productData) => {
+  try {
+    const [updatedRowsCount] = await Product.update(productData, {
+      where: { ID: id },
+    });
+    if (updatedRowsCount === 0) {
+      throw new Error('Produk tidak ditemukan');
     }
-    return null;
+    return getProductById(id);
   } catch (error) {
-    console.error('Error updating Product:', error);
-    throw error;
+    throw new Error('Gagal memperbarui produk');
   }
 };
 
-export const deleteProduct = async (id) => {
+// Menghapus produk berdasarkan ID
+export const del = async (id) => {
   try {
-    const deleted = await Product.destroy({ where: { ID: id } });
-    return deleted;
+    const deletedRowCount = await Product.destroy({
+      where: { ID: id },
+    });
+    if (deletedRowCount === 0) {
+      throw new Error('Produk tidak ditemukan');
+    }
+    return true;
   } catch (error) {
-    console.error('Error deleting Product:', error);
-    throw error;
+    throw new Error('Gagal menghapus produk');
   }
 };

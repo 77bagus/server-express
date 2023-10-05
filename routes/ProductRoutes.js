@@ -1,21 +1,25 @@
 import express from 'express';
-import ProductController from '../controller/index.js';
+import {
+    createProduct,
+    getAllProducts,
+    updateProduct,
+    deleteProduct
+  }  from '../controller/ProductController.js';
 
 const router = express.Router();
 
 // Rute untuk mengambil semua produk
-router.get('/products', ProductController.getAllProducts);
+router.get('/products', getAllProducts);
 
 // Rute untuk membuat produk baru
-router.post('/api/products', ProductController.createProduct);
+router.post('/api/products', createProduct);
 
 // Rute untuk mengambil detail produk berdasarkan ID
-router.get('/api/products/:id', ProductController.getProductById);
 
 // Rute untuk mengupdate produk berdasarkan ID
-router.put('/api/products/:id', ProductController.updateProduct);
+router.put('/api/products/:id', updateProduct);
 
 // Rute untuk menghapus produk berdasarkan ID
-router.delete('/api/products/:id', ProductController.deleteProduct);
+router.delete('/api/products/:id', deleteProduct);
 
 export default router;

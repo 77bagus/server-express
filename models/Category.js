@@ -12,13 +12,4 @@ const Category = sequelize.define('categories', {
   },
 });
 
-const syncCategory = async () => {
-  try {
-    await Category.sync();
-    console.log('Model Category telah disinkronkan dengan tabel.');
-  } catch (error) {
-    console.error('Kesalahan dalam menyinkronkan model Category:', error);
-  }
-};
-
-export default { Category, syncCategory };
+export default Category ;

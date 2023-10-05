@@ -19,6 +19,4 @@ const PaymentMethod = sequelize.define('payment_methods', {
   },
 });
 
-PaymentMethod.hasMany(CheckOut, { foreignKey: 'payment_method_id' });
-
 export default PaymentMethod;

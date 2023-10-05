@@ -29,13 +29,4 @@ const Product = sequelize.define('products', {
   },
 });
 
-const syncProduct = async () => {
-  try {
-    await Product.sync();
-    console.log('Model Product telah disinkronkan dengan tabel.');
-  } catch (error) {
-    console.error('Kesalahan dalam menyinkronkan model Product:', error);
-  }
-};
-
-export default { Product, syncProduct };
+export default Product;
