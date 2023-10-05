@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/Databases.js';
+import sequelize from '../config/Databases.js';
 import Cart from './Cart.js';
 import DaftarPesanan from './DaftarPesanan.js';
 

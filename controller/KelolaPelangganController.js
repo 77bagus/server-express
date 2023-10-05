@@ -1,4 +1,4 @@
-import { KelolaPelangganService } from '../services';
+import { KelolaPelangganService } from '../services/index.js';
 
 export const createKelolaPelanggan = async (req, res) => {
   try {

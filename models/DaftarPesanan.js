@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/Databases.js';
+import sequelize from '../config/Databases.js';
 import Users from './Users.js';
 import PaymentMethod from './PaymentMethod.js';
 
@@ -22,8 +22,5 @@ const CheckOut = sequelize.define('check_out', {
     type: DataTypes.INTEGER,
   },
 });
-
-CheckOut.belongsTo(Users, { foreignKey: 'user_id' });
-CheckOut.belongsTo(PaymentMethod, { foreignKey: 'payment_method_id' });
 
 export default CheckOut;

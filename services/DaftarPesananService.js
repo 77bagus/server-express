@@ -1,4 +1,4 @@
-import { DaftarPesanan } from '../models';
+import { DaftarPesanan } from '../models/index.js';
 
 export const createDaftarPesanan = async (daftarPesananData) => {
   const daftarPesanan = await DaftarPesanan.create(daftarPesananData);

@@ -1,7 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/Databases.js';
-import Cart from './Cart.js';
-import DaftarPesanan from './DaftarPesanan.js';
+import sequelize from '../config/Databases.js';
 
 const Users = sequelize.define('users', {
   id: {
@@ -30,7 +28,13 @@ const Users = sequelize.define('users', {
   },
 });
 
-User.hasMany(Cart, { foreignKey: 'user_id' });
-User.hasMany(DaftarPesanan, { foreignKey: 'user_id' });
+const syncUsers = async () => {
+  try {
+    await Users.sync();
+    console.log('Model Users telah disinkronkan dengan tabel.');
+  } catch (error) {
+    console.error('Kesalahan dalam menyinkronkan model Users:', error);
+  }
+};
 
-export default Users;
+export default { Users, syncUsers };

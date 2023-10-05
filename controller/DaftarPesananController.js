@@ -1,4 +1,4 @@
-import { DaftarPesananService } from '../services';
+import { DaftarPesananService } from '../services/index.js';
 
 export const createDaftarPesanan = async (req, res) => {
   try {

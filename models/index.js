@@ -1,12 +1,12 @@
-import Users from './Users';
-import Category from './Category';
-import KelolaPesanan from './KelolaPesanan';
-import PaymentMethod from './PaymentMethod';
-import Product from './Product';
-import KelolaPelanggan from './KelolaPelanggan';
-import Cart from './Cart';
-import CheckOut from './CheckOut';
-import DaftarPesanan from './DaftarPesanan';
+import Users from './Users.js';
+import Category from './Category.js';
+import KelolaPesanan from './KelolaPesanan.js';
+import PaymentMethod from './PaymentMethod.js';
+import Product from './Product.js';
+import KelolaPelanggan from './KelolaPelanggan.js';
+import Cart from './Cart.js';
+import CheckOut from './CheckOut.js';
+import DaftarPesanan from './DaftarPesanan.js';
 
 export {
   Users,

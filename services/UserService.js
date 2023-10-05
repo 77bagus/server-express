@@ -1,19 +1,40 @@
-import { User } from '../models';
+import { Users } from '../models/index.js';
 
-export const createUser = async (userData) => {
-  const newUser = await User.create(userData);
-  console.log('User created:', newUser.Username);
-  return newUser;
+import uploadProfile from '../middleware/UserUpload.js';
+
+export const registerUser = async (req, res) => {
+  try {
+    uploadProfile.single('profilePicture')(req, res, async (err) => {
+      if (err) {
+        console.error('Error uploading profile picture:', err);
+        return res.status(500).json({ message: 'Error uploading profile picture' });
+      }      
+      const profilePictureUrl = req.file ? `upload/profile/${req.file.filename}` : null;
+      const userData = {
+        nama: req.body.nama,
+        username: req.body.username,
+        telephone_number: req.body.telephone_number,
+        email: req.body.email,
+        password: req.body.Password,
+      };
+      await UsersService.createUserWithProfilePicture(userData, profilePictureUrl);
+      res.status(201).json({ message: 'User registered successfully' });
+    });
+
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 
 export const getUserById = async (id) => {
-  const user = await User.findByPk(id);
+  const user = await Users.findByPk(id);
   console.log('Retrieved user by ID:', id);
   return user;
 };
 
 export const updateUser = async (id, userData) => {
-  const [updatedRowsCount] = await User.update(userData, { where: { Username: id } });
+  const [updatedRowsCount] = await Users.update(userData, { where: { Username: id } });
   if (updatedRowsCount === 0) {
     console.log('User not found for updating:', id);
     return null;
@@ -23,7 +44,7 @@ export const updateUser = async (id, userData) => {
 };
 
 export const deleteUser = async (id) => {
-  const deletedRowCount = await User.destroy({ where: { Username: id } });
+  const deletedRowCount = await Users.destroy({ where: { Username: id } });
   if (deletedRowCount === 0) {
     console.log('User not found for deletion:', id);
     return false;

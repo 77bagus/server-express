@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/Databases.js';
+import sequelize from '../config/Databases.js';
 import CheckOut from './CheckOut.js';
 
 const PaymentMethod = sequelize.define('payment_methods', {

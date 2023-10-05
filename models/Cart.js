@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/Databases.js';
+import sequelize from '../config/Databases.js';
 import Users from './Users.js';
 import Product from './Product.js';
 
@@ -31,8 +31,5 @@ const Cart = sequelize.define('carts', {
     type: DataTypes.BOOLEAN,
   },
 });
-
-Cart.belongsTo(Users, { foreignKey: 'user_id' });
-Cart.belongsTo(Product, { foreignKey: 'product_id' });
 
 export default Cart;

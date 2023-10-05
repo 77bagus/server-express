@@ -1,4 +1,4 @@
-import { KelolaPelanggan } from '../models';
+import { KelolaPelanggan } from '../models/index.js';
 
 export const createKelolaPelanggan = async (kelolaPelangganData) => {
   try {

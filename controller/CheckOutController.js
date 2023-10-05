@@ -1,4 +1,4 @@
-import { CheckOutService } from '../services';
+import { CheckOutService } from '../services/index.js';
 
 export const createCheckOut = async (req, res) => {
   try {

@@ -1,27 +1,23 @@
 import express from 'express';
-import mysql from 'mysql2';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import bodyParser from 'body-parser';
+import routes from './routes/index.js'; // Mengimpor rute utama
 
-dotenv.config(); 
-const dbUrl = process.env.MYSQL_URL;
-const pool = mysql.createPool(dbUrl);
+dotenv.config(); // Mengimpor konfigurasi dari .env
+const port = process.env.PORT || 3000;
 
 const app = express();
-app.use(express.json());
+
+// Middleware
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error('Database connection failed:', err);
-  } else {
-    console.log('Database connected successfully');
-    connection.release(); 
-  }
-});
+// Menggunakan rute utama
+app.use('/api', routes);
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Server
+app.listen(port, () => {
+  console.log(`Server berjalan di port ${port}`);
 });

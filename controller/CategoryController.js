@@ -1,4 +1,4 @@
-import { CategoryService } from '../services';
+import { CategoryService } from '../services/index.js';
 
 export const createCategory = async (req, res) => {
   try {

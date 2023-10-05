@@ -1,4 +1,4 @@
-import { Category } from '../models';
+import { Category } from '../models/index.js';
 
 export const createCategory = async (categoryData) => {
   const newCategory = await Category.create(categoryData);

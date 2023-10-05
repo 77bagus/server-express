@@ -1,12 +1,12 @@
-import * as CartService from './CartService';
-import * as CheckOutService from './CheckOutService';
-import * as DaftarPesananService from './DaftarPesananService';
-import * as KelolaPelangganService from './KelolaPelangganService';
-import * as KelolaPesananService from './KelolaPesananService';
-import * as ProductService from './ProductService';
-import * as CategoryService from './CategoryService';
-import * as PaymentMethodService from './PaymentMethodService';
-import * as UsersService from './UsersService';
+import * as CartService from './CartService.js';
+import * as CheckOutService from './CheckOutService.js';
+import * as DaftarPesananService from './DaftarPesananService.js';
+import * as KelolaPelangganService from './KelolaPelangganService.js';
+import * as KelolaPesananService from './KelolaPesananService.js';
+import * as ProductService from './ProductService.js';
+import * as CategoryService from './CategoryService.js';
+import * as PaymentMethodService from './PaymentMethodService.js';
+import * as UserService from './UserService.js';
 
 export {
   CartService,
@@ -17,5 +17,5 @@ export {
   ProductService,
   CategoryService,
   PaymentMethodService,
-  UsersService,
+  UserService,
 };

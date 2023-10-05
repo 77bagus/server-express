@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/Databases.js';
+import sequelize from '../config/Databases.js';
 import Category from './Category.js';
 import Cart from './Cart.js';
 
@@ -29,7 +29,13 @@ const Product = sequelize.define('products', {
   },
 });
 
-Product.belongsTo(Category, { foreignKey: 'category_id' });
-Product.hasMany(Cart, { foreignKey: 'product_id' });
+const syncProduct = async () => {
+  try {
+    await Product.sync();
+    console.log('Model Product telah disinkronkan dengan tabel.');
+  } catch (error) {
+    console.error('Kesalahan dalam menyinkronkan model Product:', error);
+  }
+};
 
-export default Product;
+export default { Product, syncProduct };

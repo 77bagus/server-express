@@ -1,4 +1,4 @@
-import { Cart } from '../models';
+import { Cart } from '../models/index.js';
 
 export const createCart = async (cartData) => {
   const cart = await Cart.create(cartData);

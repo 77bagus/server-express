@@ -1,4 +1,4 @@
-import { CheckOut } from '../models';
+import { CheckOut } from '../models/index.js';
 
 export const createCheckOut = async (checkOutData) => {
   const checkOut = await CheckOut.create(checkOutData);

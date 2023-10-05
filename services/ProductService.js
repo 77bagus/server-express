@@ -1,15 +1,30 @@
-import { Product } from '../models';
+import { Product } from '../models/index.js';
 
 export const createProduct = async (productData) => {
-  try {
-    const product = await Product.create(productData);
-    console.log('Product created:', product.Product_Name);
-    return product;
-  } catch (error) {
-    console.error('Error creating Product:', error);
-    throw error;
-  }
-};
+    try {
+      
+      productsUpload(req, res, async (err) => {
+        if (err) {
+          throw new Error(err);
+        }
+        const { productName, description, categoryId, price, quantity } = req.body;
+        const productImage = req.file ? req.file.path : null; 
+        const newProduct = await Product.create({
+          productName,
+          description,
+          categoryId,
+          price,
+          quantity,
+          productImage,
+        });
+        return newProduct;
+      });
+    } catch (error) {
+      console.error('Error creating product:', error);
+      throw error;
+    }
+  };
+  
 
 export const getAllProducts = async () => {
   try {
